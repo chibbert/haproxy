@@ -1118,6 +1118,7 @@ __LJMP static int hlua_smp2lua(lua_State *L, struct sample *smp)
 		case HTTP_METH_HEAD:    lua_pushstring(L, "HEAD");    break;
 		case HTTP_METH_POST:    lua_pushstring(L, "POST");    break;
 		case HTTP_METH_PUT:     lua_pushstring(L, "PUT");     break;
+		case HTTP_METH_PATCH:   lua_pushstring(L, "PATCH");   break;
 		case HTTP_METH_DELETE:  lua_pushstring(L, "DELETE");  break;
 		case HTTP_METH_TRACE:   lua_pushstring(L, "TRACE");   break;
 		case HTTP_METH_CONNECT: lua_pushstring(L, "CONNECT"); break;
@@ -1166,6 +1167,7 @@ __LJMP static int hlua_smp2lua_str(lua_State *L, struct sample *smp)
 		case HTTP_METH_HEAD:    lua_pushstring(L, "HEAD");    break;
 		case HTTP_METH_POST:    lua_pushstring(L, "POST");    break;
 		case HTTP_METH_PUT:     lua_pushstring(L, "PUT");     break;
+		case HTTP_METH_PATCH:   lua_pushstring(L, "PATCH");   break;
 		case HTTP_METH_DELETE:  lua_pushstring(L, "DELETE");  break;
 		case HTTP_METH_TRACE:   lua_pushstring(L, "TRACE");   break;
 		case HTTP_METH_CONNECT: lua_pushstring(L, "CONNECT"); break;
@@ -8211,6 +8213,16 @@ __LJMP static int hlua_httpclient_put(lua_State *L)
 }
 
 /*
+ * Sends an HTTP PATCH request and wait for a response
+ *
+ * httpclient:patch(url, headers, payload)
+ */
+__LJMP static int hlua_httpclient_patch(lua_State *L)
+{
+	return hlua_httpclient_send(L, HTTP_METH_PATCH);
+}
+
+/*
  * Send an HTTP POST request and wait for a response
  *
  * httpclient:post(url, headers, payload)
@@ -14195,6 +14207,7 @@ lua_State *hlua_init_state(int thread_num)
 	hlua_class_function(L, "get",         hlua_httpclient_get);
 	hlua_class_function(L, "head",        hlua_httpclient_head);
 	hlua_class_function(L, "put",         hlua_httpclient_put);
+	hlua_class_function(L, "patch",       hlua_httpclient_patch);
 	hlua_class_function(L, "post",        hlua_httpclient_post);
 	hlua_class_function(L, "delete",      hlua_httpclient_delete);
 	lua_settable(L, -3); /* Sets the __index entry. */
