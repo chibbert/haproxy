@@ -2562,10 +2562,11 @@ HTTPClient class
 .. js:function:: HTTPClient.get(httpclient, request)
 .. js:function:: HTTPClient.head(httpclient, request)
 .. js:function:: HTTPClient.put(httpclient, request)
+.. js:function:: HTTPClient.patch(httpclient, request)
 .. js:function:: HTTPClient.post(httpclient, request)
 .. js:function:: HTTPClient.delete(httpclient, request)
 
-  Send a HTTP request and wait for a response. GET, HEAD PUT, POST and DELETE
+  Send a HTTP request and wait for a response. GET, HEAD PUT, PATCH, POST and DELETE
   methods can be used.
   The HTTPClient will send asynchronously the data and is able to send and
   receive more than HAProxy bufsize.
