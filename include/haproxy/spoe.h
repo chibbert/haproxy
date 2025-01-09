@@ -155,6 +155,7 @@ static inline int spoe_encode_data(struct sample *smp, char **buf, char *end)
 				case HTTP_METH_HEAD   : m = "HEAD";    len = 4; break;
 				case HTTP_METH_POST   : m = "POST";    len = 4; break;
 				case HTTP_METH_PUT    : m = "PUT";     len = 3; break;
+				case HTTP_METH_PATCH  : m = "PATCH";   len = 5; break;
 				case HTTP_METH_DELETE : m = "DELETE";  len = 6; break;
 				case HTTP_METH_TRACE  : m = "TRACE";   len = 5; break;
 				case HTTP_METH_CONNECT: m = "CONNECT"; len = 7; break;

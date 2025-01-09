@@ -358,6 +358,7 @@ const struct ist http_known_methods[HTTP_METH_OTHER] = {
 	[HTTP_METH_HEAD]    = IST("HEAD"),
 	[HTTP_METH_POST]    = IST("POST"),
 	[HTTP_METH_PUT]     = IST("PUT"),
+	[HTTP_METH_PATCH]   = IST("PATCH"),
 	[HTTP_METH_DELETE]  = IST("DELETE"),
 	[HTTP_METH_TRACE]   = IST("TRACE"),
 	[HTTP_METH_CONNECT] = IST("CONNECT"),
@@ -381,6 +382,7 @@ enum http_meth_t find_http_meth(const char *str, const int len)
 
 	if      (isteq(m, http_known_methods[HTTP_METH_GET]))     return HTTP_METH_GET;
 	else if (isteq(m, http_known_methods[HTTP_METH_PUT]))     return HTTP_METH_PUT;
+	else if (isteq(m, http_known_methods[HTTP_METH_PATCH]))   return HTTP_METH_PATCH;
 	else if (isteq(m, http_known_methods[HTTP_METH_HEAD]))    return HTTP_METH_HEAD;
 	else if (isteq(m, http_known_methods[HTTP_METH_POST]))    return HTTP_METH_POST;
 	else if (isteq(m, http_known_methods[HTTP_METH_TRACE]))   return HTTP_METH_TRACE;

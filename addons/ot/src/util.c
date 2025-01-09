@@ -595,6 +595,11 @@ int flt_ot_sample_to_str(const struct sample_data *data, char *value, size_t siz
 
 		(void)memcpy(value, HTTP_METH_STR_PUT, retval + 1);
 	}
+	else if (data->u.meth.meth == HTTP_METH_PATCH) {
+		retval = FLT_OT_STR_SIZE(HTTP_METH_PATCH);
+
+		(void)memcpy(value, HTTP_METH_PATCH, retval + 1);
+	}
 	else if (data->u.meth.meth == HTTP_METH_DELETE) {
 		retval = FLT_OT_STR_SIZE(HTTP_METH_STR_DELETE);
 
